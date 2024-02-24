@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            position: absolute;
+            top: 16%;
+            width: 70%;
+            float: right;
+            margin: 0 28%;
+        }
+
+        h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 40px;
+        }
+
+        td,
+        th {
+            border: 1px solid #b8b6b6;
+            text-align: left;
+            padding: 7px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #474f79;
+        }
+
+        table {
+            background-color: rgb(39, 38, 40);
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .issue {
+            padding: 5px;
+            width: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(71, 176, 50);
+        }
+
+        .delete {
+            padding: 5px;
+            width: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            background-color: rgb(224, 115, 42);
+        }
+
+        .return {
+            padding: 5px;
+            width: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            background-color: rgb(214, 214, 114);
+        }
+
+        .add--book {
+            width: 25%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            background-color: #d3d0d0;
+            margin: 5px 10px;
+        }
+
+        .add--book h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 40px;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        .add--book input[type="text"] {
+            width: 95%;
+            height: 6vh;
+            margin: 5px 0;
+        }
+
+        body {
+            background-color: rgb(250, 250, 250);
+        }
+
+        .add--book--btn {
+            padding: 8px;
+            margin: 15px 5px;
+            border-radius: 40px;
+            background-color: #202020;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .add--book--btn:hover {
+            background-color: #7b7777;
+            color: #000;
+            transform: scale(0.9);
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav {
+            display: flex;
+        }
+
+        .nav li {
+            padding: 6px 20px;
+            font-size: 18px;
+            list-style: none;
+        }
+
+        .nav li {
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>All Library Books</h1>
+    <table>
+        <tr>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Book Pages</th>
+            <th>Book Price</th>
+            <th>Book Availability</th>
+            <th>Issue</th>
+            <th>Return</th>
+            <th>Delete</th>
+        </tr>
+        <% data.forEach(element=> { %>
+            <tr>
+                <td><%= element.bookName %></td>
+                <td><%= element.bookAuthor %></td>
+                <td><%= element.bookPages %></td>
+                <td><%= element.bookPrice %></td>
+                <td><%= element.bookState %></td>
+
+                <td>
+                    <form action="/issue" method="post">
+                        <input type="text" style="display: none;" name="bookName" value="<%= element.bookName %>">
+                        <button type="submit" class="issue">Issue</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/return" method="post">
+                        <input type="text" style="display: none;" name="bookName" value="<%= element.bookName %>">
+                        <button type="submit" class="return">Return</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete" method="post">
+                        <input type="text" style="display: none;" name="bookName" value="<%= element.bookName %>">
+                        <button type="submit" class="delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tr>
+            </form>
+            <% }) %>
+    </table>
+
+    <form action="/" method="POST" class="add--book">
+        <h1>Add a Book here</h1>
+        <input type="text" id="input" name="bookName" placeholder="Enter BookName here..">
+        <input type="text" id="input" name="bookAuthor" placeholder="BookAuthor here...">
+        <input type="text" id="input" name="bookPages" placeholder="Enter BookPages here....">
+        <input type="text" id="input" name="bookPrice" placeholder="Enter BookPrice here.....">
+        <input type="submit" value="AddBook" class="add--book--btn">
+    </form>
+
+</body>
+</html>
