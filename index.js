@@ -91,29 +91,6 @@ app.post("/delete", (req, res) => {
     res.render("index", { data: books });
 });
 
-const students = [
-    {
-        firstName: "Evans",
-        secondName: "Mutembei",
-        schoolId: 12345,
-        studentClass: "3E",
-        booksIssued: ["Blossoms of savannah"]
-    },
-    {
-        firstName: "Marcus",
-        secondName: "Kariuki",
-        schoolId: 22545,
-        studentClass: "2E",
-        booksIssued: ["Blossoms of savannah"]
-    },
-    {
-        firstName: "Brian",
-        secondName: "Mwema",
-        schoolId: 42645,
-        studentClass: "3E",
-        booksIssued: ["Blossoms of savannah"]
-    },
-]
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
